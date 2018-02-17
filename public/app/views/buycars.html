@@ -1,0 +1,402 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>SK Cars</title>
+	<meta charset="utf-8">
+	<link href="../../assets/css/materialize.min.css" rel="stylesheet">
+	<link href="../../assets/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../../assets/css/general.css" rel="stylesheet">
+	<link href="../../assets/css/style-buycars.css" rel="stylesheet">
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700|Raleway" rel="stylesheet">
+</head>
+<body>
+	
+	<div id="header" class="header">
+
+			  <nav>
+			    <div class="nav-wrapper">
+			      <a href="#!" class="brand-logo logo"><img src="../../assets/images/logo.png"></a>
+			      <a href="#" data-activates="mobile-demo" class="button-collapse"> <img src="../../assets/images/menu.png"><!-- <i class="material-icons">menu</i> --></a>
+			      <div class="menu">
+				      <ul class="right hide-on-med-and-down menu">
+				        <a href="index.html"><li class="sliding-middle-out">Home</li></a>
+						<a href="buycars.html"><li class="sliding-middle-out">Buy Cars</li></a>
+						<a href="sellcars.html"><li class="sliding-middle-out">Sell Cars</li></a>
+						<a href="testimonials.html"><li class="sliding-middle-out">Reviews</li></a>
+						<!-- <a href="contact.php"><li class="sliding-middle-out">Contact</li></a> -->
+				      </ul>
+			      </div>
+			      <div class="side-menu">
+				      <ul class="side-nav" id="mobile-demo">
+				        <a href="index.html"><li>Home</li></a>
+						<a href="buycars.html"><li>Buy Cars</li></a>
+						<a href="sellcars.html"><li>Sell Cars</li></a>
+						<a href="testimonials.html"><li>Reviews</li></a>
+						<!-- <a href="contact.php"><li>Contact</li></a> -->
+				      </ul>
+			      </div>
+			    </div>
+			  </nav>
+	</div>
+	
+	<!-- <div ng-app="allBrands" ng-controller="brandsCtrl">
+		<p>
+			Search:<input type="text" ng-model="search">
+		</p>
+		<table>
+			<tr ng-repeat="x in brands | filter:search">
+				<td>{{x.name}}({{x.count}})</td>
+				
+			</tr>
+		</table>
+		
+	</div> -->
+	<div id="all-cars">
+			<div ng-app="allCars" ng-controller="carsCtrl">
+				<!-- <div class="col-sm-12 price-form">      
+					<div class="row price-form-row" >
+					    <div class="col-sm-6"> -->
+				<div id="wrapper">
+					<div id="sidebar-wrapper">
+					<!-- <a href="#" data-activates="mobile-demo" class="filter-button-collapse">
+						<img src="../../assets/images/menu.png">
+					</a> -->
+					<!-- Sidebar -->
+					
+			        <!-- <div id="sidebar-wrapper"> -->
+						
+						<!--pricerange filter  -->
+						<div class="list-group">
+							<span href="#" class="list-group-item active">
+								Filter
+								<span class="pull-right" id="slide-submenu">
+									<i class="fa fa-times"></i>
+								</span>
+							</span>
+						
+						
+			        		<div class="panel-group" id="accordion">
+			  					<div class="panel panel-default">
+				  					<a data-toggle="collapse" data-parent="#accordion" href="#pricerange">
+				    					<div class="panel-heading">
+				    						<h4 class="panel-title">
+				        						Price
+				     						</h4>
+				    					</div>
+				    				</a>	
+			    					<div id="pricerange"  class="panel-collapse collapse">
+			      						<div class="panel-body">
+			          						<div class="input-group">
+						        				<span>Min Price</span><br />
+						        				<select name="minPrice" id="minPrice" ng-model="priceInfo.min" class="form-control">
+						          						<option ng-repeat="price in priceRangeList" value="{{price}}">{{price | alphanumPrice}}</option>
+						        				</select>
+						      				</div>          
+						      				<div class="input-group">
+						        				<span >Max Price</span><br />
+						        				<select name="maxPrice" id="maxPrice" ng-model="priceInfo.max" class="form-control">
+						          						<option ng-repeat="price in priceRangeList" value="{{price}}">{{price | alphanumPrice}}</option>
+						          						<option value="999999999">above 2Cr</option>
+						        				</select>
+						      				</div>	
+			      						</div>
+			    					</div>
+			  					</div>
+		  					</div>    
+		  	  <!-- /pricerange -->
+				
+				<!-- brand filter -->
+						<div class="panel-group" id="accordion">
+			  					<div class="panel panel-default">
+			    					<a data-toggle="collapse" data-parent="#accordion" href="#Manufacturer">
+				    					<div class="panel-heading">
+				    						<h4 class="panel-title">
+				        						Manufacturer
+				     						</h4>
+				    					</div>
+			    					</a>
+			    					<div id="Manufacturer"  class="panel-collapse collapse">
+			      						<div class="panel-body">
+			      								<div class="panel-group" id="accordion">
+													<p>
+														<input class="brandSearch" type="text" ng-model="sBrandSearch" placeholder=" Search">
+													</p>
+													<div ng-repeat="x in brands | filter : sBrandSearch">
+				  										<div class="panel panel-default">
+				    										<a data-toggle="collapse" data-parent="#accordion" href="#{{x.id}}">
+				    										<div class="panel-heading">
+				    											<h4 class="panel-title">
+				        											{{x.name}}
+				     											</h4>
+				    										</div>
+				    										</a>
+				    										<div id="{{x.id}}"  class="panel-collapse collapse">
+				      											<div class="panel-body">
+				          											<label ng-repeat="x2 in all_cars | filter : {brand_id: x.id}:true" class="list-group-item" ng-show="x2.total > 0 ">{{x2.car_name}}
+				          												<input  type="checkbox" ng-model="Filter.carNames[x2.car_name]" ng-true-value='"{{x2.car_name}}"'  ng-false-value='"!{{x2.car_name}}"' />
+				          											</label>
+				      											</div>
+				    										</div>
+				  										</div>
+			  										</div>
+			  									</div>
+			      						</div>
+			    					</div>
+			  					</div>
+		  				</div>
+						
+		  		<!-- /brand filter -->
+		  		<!-- fueltype filter -->
+						<div class="panel-group" id="accordion">
+			  					<div class="panel panel-default">
+			    					<a data-toggle="collapse" data-parent="#accordion" href="#fueltype">
+			    					<div class="panel-heading">
+			    						<h4 class="panel-title">
+			        						Fuel Types
+			     						</h4>
+			    					</div>
+			    					</a>
+			    					<div id="fueltype" class="panel-collapse collapse">
+			      						<div class="panel-body">
+			          							<label ng-repeat="fuel in fuelOptions" class="list-group-item">
+			          							{{fuel}}<input  type="checkbox" ng-model="Filter.fuelTypes[fuel]" ng-true-value='"{{fuel}}"'  ng-false-value='"!{{fuel}}"' />
+			          							</label>
+			      						</div>
+			    					</div>
+			  					</div>
+		  				</div>
+		  		<!-- /fueltype filter -->
+		  		<!-- bodytype filter -->
+						<div class="panel-group" id="accordion">
+			  					<div class="panel panel-default">
+			    					<a data-toggle="collapse" data-parent="#accordion" href="#bodytype">
+			    					<div class="panel-heading">
+			    						<h4 class="panel-title">
+			        						Body Types
+			     						</h4>
+			    					</div>
+			    					</a>
+			    					<div id="bodytype" class="panel-collapse collapse">
+			      						<div class="panel-body">
+			          							<label ng-repeat="body in bodyOptions" class="list-group-item">
+			          							{{body}}<input  type="checkbox" ng-model="Filter.bodyTypes[body]" ng-true-value='"{{body}}"'  ng-false-value='"!{{body}}"' />
+			          							</label>
+			      						</div>
+			    					</div>
+			  					</div>
+		  				</div>
+		  		<!-- /bodytype filter -->
+		  		<!-- colortype filter -->
+						<div class="panel-group" id="accordion">
+			  					<div class="panel panel-default">
+			    					<a data-toggle="collapse" data-parent="#accordion" href="#colortype">
+				    					<div class="panel-heading">
+				    						<h4 class="panel-title">Color
+				     						</h4>
+				    					</div>
+			    					</a>
+			    					<div id="colortype" class="panel-collapse collapse">
+			      						<div class="panel-body">
+			          							<label ng-repeat="color in colorOptions" class="list-group-item">
+			          							{{color}}<input  type="checkbox" ng-model="colorTypes[color]" ng-true-value='"{{color}}"'  ng-false-value='"!{{color}}"' />
+			          							</label>
+			          							<label class="list-group-item">
+			          							Other<input  type="checkbox" ng-model="colorTypes[other]" ng-true-value='"other"'  ng-false-value='"!other"' />
+			          							</label>
+			      						</div>
+			    					</div>
+			  					</div>
+		  				</div>
+		  		<!-- /colortypetype filter -->
+		  		<!--kilometersdone filter  -->
+			        		<div class="panel-group" id="accordion">
+			  					<div class="panel panel-default">
+			    					<div class="panel-heading">
+			    						<a data-toggle="collapse" data-parent="#accordion" href="#kilometersdone">
+				    						<h4 class="panel-title">
+				        						Kilometers
+				     						</h4>
+				     					</a>	
+			    					</div>
+			    					<div id="kilometersdone"  class="panel-collapse collapse">
+			      						<div class="panel-body">
+			          						<div class="input-group">
+						        				<div>Min</div>
+						        				<select name="minKms" id="minKms" ng-model="kilometersInfo.min" class="form-control">
+						          						<option ng-repeat="km in kmsDone" value="{{km}}">{{km | numberSeparator}} kms</option>
+						        				</select>
+						      				</div>          
+						      				<div class="input-group">
+						        				<div>Max</div>
+						        				<select name="maxKms" id="maxKms" ng-model="kilometersInfo.max" class="form-control">
+						          						<option ng-repeat="km in kmsDone" value="{{km}}">{{km | numberSeparator}} kms</option>
+						          						<option value="9999999">above 1Lakh kms</option>
+						        				</select>
+						      				</div>	
+			      						</div>
+			    					</div>
+			  					</div>
+		  					</div>    
+		  	  <!-- /kilometersdone -->
+		  		<!-- transmissiontype filter -->
+						<div class="panel-group" id="accordion">
+			  					<div class="panel panel-default">
+			        				<a data-toggle="collapse" data-parent="#accordion" href="#transmissiontype">
+				    					<div class="panel-heading">
+				    						<h4 class="panel-title">Transmission
+				     						</h4>
+				    					</div>
+			    					</a>
+			    					<div id="transmissiontype" class="panel-collapse collapse">
+			      						<div class="panel-body">
+			          							<label ng-repeat="transmission in transmissionOptions" class="list-group-item">
+			          							{{transmission}}<input  type="checkbox" ng-model="Filter.transmissionTypes[transmission]" ng-true-value='"{{transmission}}"'  ng-false-value='"!{{transmission}}"' />
+			          							</label>
+			      						</div>
+			    					</div>
+			  					</div>
+		  				</div>
+		  		<!-- /transmissiontype filter -->
+		  		<!-- ownership filter -->
+						<div class="panel-group" id="accordion">
+			  					<div class="panel panel-default">
+			  						<a data-toggle="collapse" data-parent="#accordion" href="#ownership">
+				    					<div class="panel-heading">
+				    						<h4 class="panel-title">
+				        						Ownership
+				     						</h4>
+				    					</div>
+			    					</a>
+			    					<div id="ownership" class="panel-collapse collapse">
+			      						<div class="panel-body">
+						      				<label ng-repeat="owner in ownerOptions" class="list-group-item">
+			          							{{owner | num2Words}} Owner<input  type="checkbox" ng-model="ownerInfo[owner]" ng-true-value='"{{owner}}"'  ng-false-value='"!{{owner}}"' />
+			          						</label>	
+			          						<label class="list-group-item">
+			          							Fifth or More Owner<input  type="checkbox" ng-model="ownerInfo[99]" ng-true-value='"99"'  ng-false-value='"!99"' />
+			          						</label>
+			      						</div>
+			    					</div>
+			  					</div>
+		  				</div>
+		  		<!-- /ownership filter -->
+						  </div></div>
+	  				
+	  	<!-- /#sidebar-wrapper -->
+
+			        <!-- Page Content -->
+			        <div id="page-content-wrapper">
+			            <div class="container-fluid">
+							<div class="mini-submenu" id="mini-submenu"> 
+								<img src="../../assets/images/levels.png">
+							</div>
+							<p>
+								<input class="search" auto-complete ui-items="acNames" type="text" ng-model="gSearch" placeholder="Search">
+							</p>
+							<div ng-repeat="x in cars | filter:gSearch | priceRange: priceInfo | kilometersDone: kilometersInfo | ownershipNum: ownerInfo |searchFilter: Filter.carNames | searchFilter: Filter.fuelTypes | searchFilter: Filter.bodyTypes | searchFilter: Filter.transmissionTypes |colorFilter:colorTypes">
+								
+								<div class="col-md-3 col-sm-6 col-xs-12">
+									<div class="wrap">
+										<a href="cardetails.html?id={{x.id}}">
+											<img src="../../assets/images/uploads/cardetails/{{x.car_img|split:',':0}}" />	
+											<div class="content-wrap">
+												<h4>{{x.brand_name}} {{x.car_name}} <span class="car-model">{{x.model}}</span></h4>
+												<h5 class="{{x.price}}">{{x.price|alphanumPrice}}</h5>
+												<table class="shortinfo">
+													<tr>
+														<td><label><span value="{{x.kilometers}}">{{x.kilometers|numberSeparator}} kms</span></label></td>
+														<td class="divider">|</td>
+														<td><label><span class="{{x.timestamp}}">{{x.fuel_type}}</span></label></td>
+														<td class="divider">|</td>
+														<td><label><span class="{{x.body_type}}">{{x.color}}</span></label></td>
+													</tr>
+													<tr>
+														<td><label><span>{{x.year}}</span></label></td>
+														<td class="divider">|</td>
+														<td><label><span>{{x.transmission}}</span></label></td>
+														<td class="divider">|</td>
+														<td><label><span>{{x.owners | num2Words}} Owner</span></label></td>
+													</tr>
+												</table>
+											</div>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+			</div>
+		</div>	
+	</div>	
+
+	<div id="footer-contact">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4">
+					<div class="subscribe">
+						<h2>Subscribe</h2>
+						<form>
+							<input type="email" name="gtmail" placeholder="Email" id="exampleInputEmail1" maxlength="38" required="">
+							<input type="submit" value="Submit">
+							<span id="errormessage" class="text-danger">&nbsp;</span>
+						</form>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="about">
+						<h2>SK Cars</h2>
+						<p>SK Cars, This is the ideal place to buy/sell all types of new/old branded cars.</p>
+					</div>
+					<div class="social-icons">
+						<div class="align">
+							<a href="">
+								<div class="fb icon">
+									<img src="../../assets/images/facebook-logo.png">
+								</div>
+							</a>
+						</div>
+						<div class="align">
+							<a href="">
+								<div class="tw icon">
+									<img src="../../assets/images/twitter-logo.png">
+								</div>
+							</a>
+						</div>
+						<div class="align">
+							<a href="">
+								<div class="g icon">
+									<img src="../../assets/images/google-plus.png">
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="contact">
+						<h2>Contact</h2>
+						<p class="address">789, AAA Street,
+							<span>Place, PIN - 888 888</span>
+						</p>
+						<p class="mobile">+91 98765 41230</p>
+						<p class="email">abcd@gmail.com</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="footer">
+		 Copyrights &#xa9; 2017 SK
+	</div>	
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="../../assets/js/materialize.min.js"></script>
+	<script src="../../assets/js/bootstrap.min.js"></script>
+	<script src="../../assets/js/owl.carousel.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<script src="../services/services.js"></script>
+	<script src="../js/buycars.js"></script>
+</body>
+</html>

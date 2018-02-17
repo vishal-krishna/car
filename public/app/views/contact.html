@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>SK Cars</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+	<meta name="description" content="Find used cars for sale locally in Chennai - BMW, Audi, Benz, Honda, Chevrolet, Maruti, Hyundai, Tata, Toyota and more on GT Reddy Cars.">
+	<meta name="keywords" content="gtreddy cars, gtreddycars, chennai, buy, sell, cars, used, secondhand, second, hand, handed, gt reddy, gt reddy, gt ready cars, gt ready" />
+	<link href="../../assets/css/materialize.min.css" rel="stylesheet">
+	<link href="../../assets/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../../assets/css/owl.carousel.css" rel="stylesheet">
+	<link href="../../assets/css/owl.theme.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700|Raleway" rel="stylesheet">
+	<link href="../../assets/css/general.css" rel="stylesheet">
+</head>
+<body>
+	
+	<div id="header" class="header">
+
+			  <nav>
+			    <div class="nav-wrapper">
+			      <a href="#!" class="brand-logo logo"><img src="images/logo1.png"></a>
+			      <a href="#" data-activates="mobile-demo" class="button-collapse"> <img src="images/menu.png"><!-- <i class="material-icons">menu</i> --></a>
+			      <div class="menu">
+					<ul class="right hide-on-med-and-down menu">
+						<a href="index.html">
+							<li class="sliding-middle-out">Home</li>
+						</a>
+						<a href="buycars.html">
+							<li class="sliding-middle-out">Buy Cars</li>
+						</a>
+						<a href="sellcars.html">
+							<li class="sliding-middle-out">Sell Cars</li>
+						</a>
+						<a href="testimonials.html">
+							<li class="sliding-middle-out">Reviews</li>
+						</a>
+						<!-- <a href="contact.php"><li class="sliding-middle-out">Contact</li></a> -->
+					</ul>
+					</div>
+					<div class="side-menu">
+						<ul class="side-nav" id="mobile-demo">
+							<a href="index.html">
+								<li>Home</li>
+							</a>
+							<a href="buycars.html">
+								<li>Buy Cars</li>
+							</a>
+							<a href="sellcars.html">
+								<li>Sell Cars</li>
+							</a>
+							<a href="testimonials.html">
+								<li>Reviews</li>
+							</a>
+							<!-- <a href="contact.php"><li>Contact</li></a> -->
+						</ul>
+			      </div>
+			    </div>
+			  </nav>
+	</div>
+	
+	<div id="footer-contact">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4">
+					<div class="subscribe">
+						<h2>Subscribe</h2>
+						<form>
+							<input type="email" name="gtmail" placeholder="Email" id="exampleInputEmail1" maxlength="38" required="">
+							<input type="submit" value="Submit">
+							<span id="errormessage" class="text-danger">&nbsp;</span>
+						</form>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="about">
+						<h2>SK Cars</h2>
+						<p>SK Cars, This is the ideal place to buy/sell all types of new/old branded cars.</p>
+					</div>
+					<div class="social-icons">
+						<div class="align">
+							<a href="">
+								<div class="fb icon">
+									<img src="../../assets/images/facebook-logo.png">
+								</div>
+							</a>
+						</div>
+						<div class="align">
+							<a href="">
+								<div class="tw icon">
+									<img src="../../assets/images/twitter-logo.png">
+								</div>
+							</a>
+						</div>
+						<div class="align">
+							<a href="">
+								<div class="g icon">
+									<img src="../../assets/images/google-plus.png">
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="contact">
+						<h2>Contact</h2>
+						<p class="address">789, AAA Street,
+							<span>Place, PIN - 888 888</span>
+						</p>
+						<p class="mobile">+91 98765 41230</p>
+						<p class="email">abcd@gmail.com</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="footer">
+		 Copyrights &#xa9; 2017 SK
+	</div>	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="../../assets/js/bootstrap.min.js"></script>
+	<script src="../../assets/js/materialize.min.js"></script>
+	<script src="../../assets/js/owl.carousel.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<script type="text/javascript">
+		$( document ).ready(function(){
+			$(".button-collapse").sideNav();
+			 var scroll_pos = 0;
+            $(document).scroll(function() { 
+                scroll_pos = $(this).scrollTop();
+                if($(window).scrollTop() > $('nav:visible').height()) {
+                // if(scroll_pos > $("#header").height()) {
+                    $("nav").css({'-moz-transition':'background  .2s ease-in','-o-transition':'background  .2s ease-in','-webkit-transition':'background  .2s ease-in','background':'rgba(14, 64, 91,.9)'});
+                } else {
+                    $("nav").css('background-color', 'rgba(50, 7, 97, 0)');
+                }
+            });
+		});
+
+	
+	</script>
+</body>
+</html>

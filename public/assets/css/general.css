@@ -1,0 +1,271 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	font-size: 15px;
+    font-family: 'Raleway', sans-serif;
+    background-color: #272727;
+}
+img{
+	max-width:100%;
+	vertical-align: middle;
+}
+ul, li {
+	list-style-type: none;
+	margin: 0;
+	overflow: auto;
+}
+h2,h4{
+    font-family: 'Lato', sans-serif;
+}
+a:focus, a:hover, a {
+    color: #ffffff;
+    text-decoration: none;
+}
+/*************************
+	Header
+*************************/
+#header{
+	position: absolute;
+	width: 100%;
+	z-index: 1000;
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+}
+nav {
+	background-color: rgba(50, 7, 97, 0);
+	position: fixed;
+	width: 100%;
+	box-shadow: none; 
+}
+nav .nav-wrapper{
+    padding: 0 5%;
+    z-index: 8;
+    background: #1d1d1d;
+    overflow: hidden;
+    color: #919191;
+    backface-visibility: hidden;
+}
+nav ul a{
+    padding: 0px;
+    display: inline;
+}
+.logo img{
+	width: 25%;
+}
+.menu ul {
+	float: right;
+}
+.menu ul li{
+	cursor: pointer;
+	display: inline-block;
+	padding: 0px 16px;
+	color: #ccc;
+	font-size: 16px;
+    font-weight: bold;
+}
+.sliding-middle-out:hover:after{
+	width: 100%;
+    background: #f3371c;
+}
+.sliding-middle-out:after {
+    content: '';
+    display: block;
+    margin: auto;
+    height: 2px;
+    width: 0px;
+    background: transparent;
+    margin: -2px 0 0 0;
+    transition: width .5s ease, background-color .5s ease;
+}
+.side-nav {
+	background-color: rgba(4, 4, 4, 0.85);
+	text-align: center;
+}
+
+
+/*************************
+	CONTACT, About
+*************************/
+#footer-contact{
+    background:#383636;
+    /* margin-top: 25px; */
+}
+#footer-contact .container{
+	padding: 50px 0;
+}
+#footer-contact .about{
+	text-align: center;
+}
+#footer-contact .about,#footer-contact .contact{
+	display: inline-block;
+	color: #ccc;
+}
+#footer-contact .about p{
+    padding-top: 20px;
+    padding-bottom: 16px;
+}
+#footer-contact h2{
+    color : #fff;
+}
+.contact .address{
+	color: #ccc;
+    line-height: 1.8em;
+    padding-left: 3em;
+    margin: 2em 0 0 0;
+    background: url(../images/location.png) no-repeat 0px 10px;
+}
+.contact .address span{
+	display: block;
+}
+.contact .mobile{
+	color: #ccc;
+    line-height: 1.8em;
+    padding-left: 3em;
+    margin: 2em 0 0 0;
+    background: url(../images/phone.png) no-repeat 0px 0px;
+}
+.contact{
+	float: right;
+}
+.contact .email{
+	color: #ccc;
+    line-height: 1.8em;
+    padding-left: 3em;
+    margin: 2em 0 0 0;
+    background: url(../images/envelope.png) no-repeat 0px 0px;
+}
+.social-icons {	
+	text-align: center;
+}
+.social-icons .align{
+    display: inline-block;
+    padding: 10px;
+    text-align: center;
+}
+.social-icons .icon{
+    border-radius: 50%;
+    border: 1px solid #fff;
+    padding: 10px;
+}
+.social-icons .fb:hover{
+    background: #3865a4;
+}
+.social-icons .tw:hover{
+    background: #1dadea;
+}
+.social-icons .g:hover{
+    background: #db4c3f;
+}
+.subscribe input[type="email"] {
+    width: 90%;
+    background: none;
+    outline: none;
+    font-size: 16px;
+    padding: .5em;
+    padding-top: 12px;
+    margin-bottom: 2em;
+    -webkit-appearance: none;
+    border-bottom: solid 1px #595959;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+}
+.subscribe input[type="submit"] {
+    border: none;
+    outline: none;
+    color: #ccc;
+    padding: .5em 1.5em;
+    font-size: 16px;
+    margin: 0.5em 0 0 0;
+    float: left; 
+    -webkit-appearance: none;
+    background: #383636;
+    border-radius: 5px;
+    border: 1px solid #fff;
+    -webkit-border-radius: 5px;
+}
+.subscribe input[type="submit"]:hover{
+    background-color: #f3371c;
+}
+.subscribe input[type=email]:focus:not([readonly]) {
+    border-bottom: 1px solid #f3371c;
+    box-shadow: 0 1px 0 0 #f3371c;
+}
+.subscribe{
+	color: #ccc;
+}
+
+/*************************
+	Footer
+*************************/
+#footer{
+    text-align: center;
+    padding: 15px 0;
+    color: #ccc;
+    background-color: #312f2f;
+    font-size: 16px;
+}
+
+
+/* media querries */
+/*==========  Non-Mobile First Method  ==========*/
+
+    /* Large Devices, Wide Screens */
+    @media only screen and (max-width : 1200px) {
+
+    }
+
+    /* Medium Devices, Desktops */
+    @media only screen and (max-width : 992px) {
+        .side-nav a {
+            padding: 0 16px;
+            color: #ccc;
+        }
+        .side-nav a:hover {
+            background-color: rgba(0,0,0,0.05);
+            color: #f3371c;
+        }
+        nav .brand-logo {
+            left: 50%;
+            /* -webkit-transform: translateX(-50%); */
+            transform: translateX(-50%);
+            text-align: center;
+        }
+    }
+
+    /* Small Devices, Tablets */
+    @media only screen and (max-width : 768px) {
+        .logo img {
+            width: 28%;
+         }
+         .contact {
+            float: inherit;
+        }
+        .subscribe input[type="submit"] {
+            float: inherit;
+        }
+        .subscribe,.social-icons {
+            padding-bottom: 18px;
+        }
+        #footer-contact {
+            text-align: center;
+        }
+    }
+
+    /* Extra Small Devices, Phones */ 
+    @media only screen and (max-width : 480px) {
+
+    }
+
+    /* Custom, iPhone Retina */ 
+    @media only screen and (max-width : 320px) {
+
+    }
+
+
+
+
+
+ 

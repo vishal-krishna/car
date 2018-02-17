@@ -1,0 +1,98 @@
+
+
+        /* body {
+            margin: 0;
+            
+        } */
+
+        /* The grid: Four equal columns that floats next to each other */
+
+        .column {
+            float: left;
+            width: 25%;
+            padding: 10px;
+        }
+
+        /* Style the images inside the grid */
+
+        .column img {
+            opacity: 0.8;
+            cursor: pointer;
+        }
+
+        .column img:hover {
+            opacity: 1;
+        }
+
+        /* Clear floats after the columns */
+
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        .row{
+            margin: 0;
+        }
+        /* The expanding image container */
+
+        .container {
+            position: relative;
+            display: none;
+        }
+
+        /* Expanding image text */
+
+        #imgtext {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            color: white;
+            font-size: 20px;
+        }
+
+        /* Closable button inside the expanded image */
+
+        .closebtn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            color: white;
+            font-size: 35px;
+            cursor: pointer;
+        }
+
+
+        .content-box{
+            padding-top: 70px;
+        }
+        .expanded-img{
+                border: 3px solid #ccc;
+        }
+
+        .car-datas{
+            color: #f3ff56;
+            text-align: center;
+            font-size: 15px;
+            /* font-weight: bold; */
+        }
+        .cartitle {
+            color: #f3371c;
+
+        }
+        .car-datas h2{
+                padding: 35px 0;
+                color: #f3371c;
+        }
+        .car-datas table{
+            width: 100%;
+        }
+        .car-datas table td{
+            padding: 14px 5px;
+        }
+        .car-datas table tr:nth-child(even) {
+            background-color: #23232369;
+        }
+        .car-datas table tr:nth-child(odd) {
+            background-color: #232222;
+        }

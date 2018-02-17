@@ -1,0 +1,265 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>SK Cars</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+	<meta name="description" content="Find used cars for sale, BMW, Audi, Benz, Honda, Chevrolet, Maruti, Hyundai, Tata, Toyota and more on SK Cars.">
+	<meta name="keywords" content="sk cars, skcars, buy, sell, cars, used, secondhand, second, hand, handed, sk" />
+	<link href="../../assets/css/materialize.min.css" rel="stylesheet">
+	<link href="../../assets/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../../assets/css/owl.carousel.css" rel="stylesheet">
+	<link href="../../assets/css/owl.theme.css" rel="stylesheet">
+	<link href="../../assets/css/general.css" rel="stylesheet">
+	<link href="../../assets/css/index.css" rel="stylesheet">
+
+	
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700|Raleway" rel="stylesheet">
+</head>
+<body>
+	
+	<div id="banner">
+		<div id="header" class="header">
+			  <nav>
+			    <div class="nav-wrapper">
+			      <a href="#!" class="brand-logo logo"><img src="../../assets/images/logo.png"></a>
+			      <a href="#" data-activates="mobile-demo" class="button-collapse"> <img src="../../assets/images/menu.png"><!-- <i class="material-icons">menu</i> --></a>
+			      <div class="menu">
+					<ul class="right hide-on-med-and-down menu">
+						<a href="index.html">
+							<li class="sliding-middle-out">Home</li>
+						</a>
+						<a href="buycars.html">
+							<li class="sliding-middle-out">Buy Cars</li>
+						</a>
+						<a href="sellcars.html">
+							<li class="sliding-middle-out">Sell Cars</li>
+						</a>
+						<a href="testimonials.html">
+							<li class="sliding-middle-out">Reviews</li>
+						</a>
+						<!-- <a href="contact.php"><li class="sliding-middle-out">Contact</li></a> -->
+					</ul>
+					</div>
+					<div class="side-menu">
+						<ul class="side-nav" id="mobile-demo">
+							<a href="index.html">
+								<li>Home</li>
+							</a>
+							<a href="buycars.html">
+								<li>Buy Cars</li>
+							</a>
+							<a href="sellcars.html">
+								<li>Sell Cars</li>
+							</a>
+							<a href="testimonials.html">
+								<li>Reviews</li>
+							</a>
+							<!-- <a href="contact.php"><li>Contact</li></a> -->
+						</ul>
+			      </div>
+			    </div>
+			  </nav>
+		</div>
+		
+		<div id="fileters" ng-app="indexFiltersApp" ng-controller="indexFilterCtrl">
+		<img src="../../assets/images/toyotaaa.jpg">
+		<div class="container img-container">
+			<div class="row">
+				<div class="filters-wrap">
+					<div class="price_range">
+						<div class="min_price">
+	        				<div>Min Price</div><br />
+	        				<select name="minPrice" id="minPrice" ng-model="priceInfo.min" class="form-control">
+	          						<option ng-repeat="price in priceRangeList" value="{{price}}">{{price | alphanumPrice}}</option>
+	        				</select>
+	      				</div>          
+	      				<div class="max_price">
+	        				<div>Max Price</div><br />
+	        				<select name="maxPrice" id="maxPrice" ng-model="priceInfo.max" class="form-control">
+	          						<option ng-repeat="price in priceRangeList" value="{{price}}">{{price | alphanumPrice}}</option>
+	          						<option value="999999999">above 2Cr</option>
+	        				</select>
+	      				</div>	
+					</div>
+					<div class="body_type">
+	        				<div>Body Type</div><br />
+	        				<select name="bodytype" id="bodytype" ng-model="bodyOption" class="form-control">
+	          						<option value="">Select-Type</option>
+	          						<option ng-repeat="body in bodyOptions" value="{{body}}">{{body}}</option>
+	          						<!-- <option value="999999999">above 2Cr</option> -->
+	        				</select>
+	      			</div>	
+					<div class="go">
+						<div class="gobtn" ng-click="submit()">Go<div class="goarrow"></div></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	
+	<div id="recent-cars">
+		<div class="container">
+			<div class=row>
+				<h2>Recent Used Cars</h2>
+				<div id="recentCars" ng-app="recentcarsApp" ng-controller="recentcarsCtrl">
+					<div ng-repeat="x in recentcars | orderBy:'-timestamp' | limitTo: 4">
+						<div class="col-md-3 col-sm-3 col-xs-6">
+							<a href="cardetails.html?id={{x.id}}">
+								<div class="wrap">
+									<img src="../../assets/images/uploads/cardetails/{{x.car_img|split:',':0}}" />
+									<div class="recent-contant-wrap">
+										<h4>{{x.car_name}}</h4>
+										<p>{{x.color}}</p>
+										<p>{{x.kilometers}}kms</p>
+									</div>
+									<span class="{{x.timestamp}}"></span>
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="view-all">
+				<a href="buycars.html"><button>View all</button></a>
+			</div>
+			
+		</div>
+		</div>
+	
+	<div id="testimonials">
+		<div class="container">
+			<h2>Testimonials</h2>
+			<div class="testimonial-owl-carousel">
+					<div class="item">
+						<div class="testimonial-pic col-md-3 col-sm-6 col-xs-6">
+							<img src="../../assets/images/testimonial1.jpg">
+						</div>
+						<div class="testimonial-content col-md-8 col-sm-6 col-xs-6" >
+							<h4>Name Name</h4>
+							<h6>Place</h6>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
+						</div>
+					</div>
+					<div class="item">
+						<div class="testimonial-pic col-md-3 col-sm-6 col-xs-6">
+							<img src="../../assets/images/testimonial1.jpg">
+						</div>
+						<div class="testimonial-content col-md-8 col-sm-6 col-xs-6" >
+							<h4>Name Name</h4>
+							<h6>Place</h6>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
+						</div>
+					</div><div class="item">
+						<div class="testimonial-pic col-md-3 col-sm-6 col-xs-6">
+							<img src="../../assets/images/testimonial1.jpg">
+						</div>
+						<div class="testimonial-content col-md-8 col-sm-6 col-xs-6" >
+							<h4>Name Name</h4>
+							<h6>Place</h6>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
+						</div>
+					</div>
+			</div>
+			<div class="view-all">
+				<a href="">View all</a>
+			</div>
+		</div>
+	</div>
+	<div id="popular-cars">
+		<div class="container">
+			<div class=row>
+				<h2>Popular Used Cars</h2>
+				<div class="col-md-3 col-sm-3 col-xs-6">
+					<div class="wrap">
+							<img src="../../assets/images/popular.jpg">
+							<div class="contant-wrap">
+								<h4>Car Name</h4>
+								<p class="price">&#x20b9; 12 lakhs</p>
+								<!-- <p><a href="">View similar hatchbacks</a></p> -->
+							</div>
+					</div>
+				</div>
+				<div class="col-md-3 col-sm-3 col-xs-6">
+					<div class="wrap">
+							<img src="../../assets/images/popular.jpg">
+							<div class="contant-wrap">
+								<h4>Car Name</h4>
+								<p class="price">&#x20b9; 12 lakhs</p>
+								<!-- <p><a href="">View similar sedans</a></p> -->
+							</div>
+						</div>
+				</div>
+				<div class="col-md-3 col-sm-3 col-xs-6">
+					<div class="wrap">
+							<img src="../../assets/images/popular.jpg">
+							<div class="contant-wrap">
+								<h4>Car Name</h4>
+								<p class="price">&#x20b9; 12 lakhs</p>
+								<!-- <p><a href="">View similar suvs</a></p> -->
+							</div>
+					</div>
+				</div>
+				<div class="col-md-3 col-sm-3 col-xs-6">
+					<div class="wrap">
+							<img src="../../assets/images/popular.jpg">
+							<div class="contant-wrap">
+								<h4>Car Name</h4>
+								<p class="price">&#x20b9; 12 lakhs</p>
+								<!-- <p><a href="">View similar luxury cars</a></p> -->
+							</div>
+					</div>
+				</div>
+			</div>
+			<!-- <div class="view-all">
+				<a href="">View all</a>
+			</div> -->
+		</div>	
+	</div>
+	<div id="footer-contact">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4 col-sm-4">
+					<div class="subscribe">
+						<h2>Subscribe</h2>
+						<form>
+							<input type="email" name="gtmail" placeholder="Email" id="exampleInputEmail1" maxlength="38" required="">
+							<input type="submit" value="Submit"><span id="errormessage" class="text-danger">&nbsp;</span>
+						</form>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-4">
+					<div class="about">
+						<h2>SK Cars</h2>
+						<p>SK Cars, This is the ideal place to buy/sell all types of new/old branded cars.</p>
+					</div>
+					<div class="social-icons">
+						<div class="align"><a href=""><div class="fb icon"><img src="../../assets/images/facebook-logo.png"></div></a></div>
+						<div class="align"><a href=""><div class="tw icon"><img src="../../assets/images/twitter-logo.png"></div></a></div>
+						<div class="align"><a href=""><div class="g icon"><img src="../../assets/images/google-plus.png"></div></a></div>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-4">
+					<div class="contact">
+						<h2>Contact</h2>
+						<p class="address">789, AAA Street,<span>Place, PIN - 888 888</span></p>
+						<p class="mobile">+91 98765 41230</p>
+						<p class="email">abcd@gmail.com</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="footer">
+		Copyrights &#xa9; 2017 SK
+	</div>	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="../../assets/js/bootstrap.min.js"></script>
+	<script src="../../assets/js/materialize.min.js"></script>
+	<script src="../../assets/js/owl.carousel.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<script src="../js/index.js"></script>
+</body>
+</html>

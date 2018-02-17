@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SK Cars</title>
+    <meta charset="utf-8">
+    <link href="../../assets/css/materialize.min.css" rel="stylesheet">
+    <link href="../../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../assets/css/general.css" rel="stylesheet">
+    <link href="../../assets/css/style-cardetails.css" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700|Raleway" rel="stylesheet">
+
+    
+</head>
+
+<body>
+
+    <div id="header" class="header">
+    
+        <nav>
+            <div class="nav-wrapper">
+                <a href="#!" class="brand-logo logo">
+                    <img src="../../assets/images/logo.png">
+                </a>
+                <a href="#" data-activates="mobile-demo" class="button-collapse">
+                    <img src="../../assets/images/menu.png">
+                    <!-- <i class="material-icons">menu</i> -->
+                </a>
+                <div class="menu">
+                    <ul class="right hide-on-med-and-down menu">
+                        <a href="index.html">
+                            <li class="sliding-middle-out">Home</li>
+                        </a>
+                        <a href="buycars.html">
+                            <li class="sliding-middle-out">Buy Cars</li>
+                        </a>
+                        <a href="sellcars.html">
+                            <li class="sliding-middle-out">Sell Cars</li>
+                        </a>
+                        <a href="testimonials.html">
+                            <li class="sliding-middle-out">Reviews</li>
+                        </a>
+                        <!-- <a href="contact.php"><li class="sliding-middle-out">Contact</li></a> -->
+                    </ul>
+                </div>
+                <div class="side-menu">
+                    <ul class="side-nav" id="mobile-demo">
+                        <a href="index.html">
+                            <li>Home</li>
+                        </a>
+                        <a href="buycars.html">
+                            <li>Buy Cars</li>
+                        </a>
+                        <a href="sellcars.html">
+                            <li>Sell Cars</li>
+                        </a>
+                        <a href="testimonials.html">
+                            <li>Reviews</li>
+                        </a>
+                        <!-- <a href="contact.php"><li>Contact</li></a> -->
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+<div class="row content-box" ng-app="cardetailsApp" ng-controller="cardetailsCtrl">   
+<div class="col-md-6">
+    <!-- The four columns -->
+    <div class="row">
+        <div class="column" ng-repeat="x in carImg">
+            <img src="../../assets/images/uploads/cardetails/{{x}}" alt="Nature" style="width:100%" onclick="myFunction(this);">
+        </div>
+    </div>
+    <div class="row">
+    <div class="expanded-img">
+        <!-- <span onclick="this.parentElement.style.display='none'" class="closebtn">&times;</span> -->
+        <img id="expandedImg" style="width:100%" src="../../assets/images/uploads/cardetails/{{imgId1}}">
+        <!-- <div id="imgtext"></div> -->
+    </div>
+    </div>
+</div>
+<div class="col-md-6 car-datas">
+    <h2>
+        {{CDdata.car_name}}
+    </h2>
+    <div class="col-md-6">
+        <table>
+            <tr>
+                <td class="cartitle">
+                    Brand
+                </td>
+                <td>
+                     {{CDdata.brand_name}}
+                </td>
+            </tr>
+            <tr>
+                <td class="cartitle">
+                    Model
+                </td>
+                <td>
+                     {{CDdata.model}}
+                </td>
+            </tr>
+            <tr>
+                <td class="cartitle">
+                    Body
+                </td>
+                <td>
+                     {{CDdata.body_type}}
+                </td>
+            </tr>
+            <tr>
+                <td class="cartitle">
+                    Fuel 
+                </td>
+                <td>
+                     {{CDdata.fuel_type}}
+                </td>
+            </tr>
+            <tr>
+                <td class="cartitle">
+                    Transmission
+                </td>
+                <td>
+                     {{CDdata.transmission}}
+                </td>
+            </tr>
+            <tr>
+                <td class="cartitle">
+                    Color
+                </td>
+                <td>
+                     {{CDdata.color}}
+                </td>
+            </tr>
+            
+            
+        </table>
+    </div>
+    <div class="col-md-6">
+        <table>
+            <tr>
+                <td class="cartitle"> Price</td>
+                <td>{{CDdata.price|alphanumPrice}}</td>
+            </tr>
+            <tr>
+                <td class="cartitle">Mileage</td>
+                <td>{{CDdata.mileage|numberSeparator}}</td>
+            </tr>
+            <tr>
+                <td class="cartitle">Kilometers</td>
+                <td>{{CDdata.kilometers|numberSeparator}} kms</td>
+            </tr>
+            <tr>
+                <td class="cartitle">Year</td>
+                <td>{{CDdata.year}}</td>
+            </tr>
+            <tr>
+                <td class="cartitle">Owners</td>
+                <td>{{CDdata.owners}}</td>
+            </tr>
+        </table>
+    </div>
+    
+    </div>
+             
+   
+</div>
+</div>
+
+
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="../../assets/js/materialize.min.js"></script>
+        <script src="../../assets/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+        <script src="../services/services.js"></script>
+        <script src="../js/cardetails.js"></script>
+</body>
+
+</html>

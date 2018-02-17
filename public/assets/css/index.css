@@ -1,0 +1,304 @@
+/*************************
+    Banner Filters
+**************************/
+#fileters{
+    position: relative;
+    color: #fff;
+}
+#fileters img{
+    opacity: 0.35;
+    width: 100%;
+    height: 547px;
+}
+.img-container{
+    position: absolute;
+    top: 41%;
+    width: 100%;
+    text-align: center;
+}
+.img-container .row{
+    margin: 0;
+}
+.filters-wrap{
+    background-color: #0009;
+    width: 516px;
+    padding: 30px;
+    margin: auto
+}
+.price_range,.min_price,.max_price,.body_type,.go{
+    display: inline-block;
+}
+#fileters .go{
+    display: block;
+    padding-top: 10px;
+}
+.gobtn{
+    display: inline-block;
+    border-radius: 3px;
+    padding: 6px 20px;
+    background-color: #f3371c;
+}
+
+/*************************
+	Resent Used Cars
+**************************/
+
+#recent-cars h2,#recent-cars h4{
+    text-align: center;
+    color: #fff;
+}
+#recent-cars h2{
+	padding: 40px 0 30px;
+	
+}
+#recent-cars img{
+    width: 256px;
+    height: 161px;
+}
+#recent-cars p{
+	text-align: center;
+}
+#recent-cars p a,#recent-cars .view-all a{
+	text-decoration: none;
+}
+#recent-cars .view-all{
+	text-align: center;
+	font-size: 16px;
+	padding: 20px 0 50px;
+}
+#recent-cars .view-all button{
+	border: 2px solid rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
+    padding: 5px 20px;
+    background-color: #272727;
+    border-radius: 20px;
+}
+#recent-cars .view-all button:hover{
+	border: 2px solid #f3371c;
+}
+#recent-cars .col-md-3{
+	padding:0 15px;
+}
+#recent-cars .wrap{
+    border: 5px solid #ccc;
+    border-radius: 5px;
+    color: #ccc;
+}
+#recent-cars .wrap:hover{
+    box-shadow: 0px 0px 10px #f3371c;
+    border: 5px solid #f3371c;
+}
+
+/*************************
+	TESTIMONIALS
+*************************/
+#testimonials{
+    background: #f5f5f5;
+}
+#testimonials h2{
+	text-align: center;
+	padding-top: 10px;
+    padding-bottom: 20px;
+}
+.testimonial-pic{
+	display: inline-block;
+}
+.testimonial-content{
+	display: inline-block;
+}
+#testimonials .view-all a{
+	text-decoration: none; 
+}
+#testimonials .view-all{
+	text-align: center;
+	padding-top: 30px;
+}
+#testimonials .container{
+    padding-bottom: 50px;
+    padding-top: 30px;
+}
+/*****OWL CAROUSEL*******/
+#testimonials .owl-theme .owl-controls {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 75px;
+    margin: auto;
+}
+#testimonials .owl-buttons {
+    text-align: center;
+}
+#testimonials .owl-theme .owl-controls .owl-buttons div {
+    padding: 10px;
+    margin: 10px;
+    border-radius: 0px;
+}
+#testimonials .owl-next{
+	float: right;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.59);
+    border-radius: 50%;
+}
+#testimonials .owl-prev{
+	float: left;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.59);
+    border-radius: 50%;
+}
+#testimonials .owl-stage {
+    right: 67px;
+}
+#testimonials .owl-item{
+    width: 860px;
+}
+
+
+/*************************
+	POPULAR CARS
+*************************/
+#popular-cars{
+    background-color: #272727;
+    color: #ccc;
+}
+#popular-cars .col-md-3 {
+    padding: 0 15px;
+}
+#popular-cars img{
+	padding: 0;
+}
+#popular-cars h2{
+	text-align: center; 
+    padding: 40px 0 30px;
+    color: #fff;
+}
+#popular-cars h4{
+    color: #fff
+}
+#popular-cars .contant-wrap{
+	padding-left: 15px;
+}
+#popular-cars .price{
+	font-size: 24px;
+}
+#popular-cars .wrap{
+	border: 5px solid #ccc;
+    border-radius: 5px;
+}
+#popular-cars p a,#popular-cars .view-all a{
+	text-decoration: none;
+}
+#popular-cars .wrap:hover{
+    box-shadow: 0px 0px 10px #f3371c;
+    border: 5px solid #f3371c;
+}
+#popular-cars .view-all{
+	text-align: center;
+	font-size: 16px;
+	padding: 20px 0 50px;
+}
+
+
+
+/* media querries */
+
+
+@media (max-width: 578px) {
+    .filters-wrap {
+        width: 90%;
+    }
+
+}
+/* Landscape phones and down */
+@media (max-width: 480px) {
+    .logo img {
+        width: 38%;
+    }
+}
+
+
+/*==========  Non-Mobile First Method  ==========*/
+
+    /* Large Devices, Wide Screens */
+    @media only screen and (max-width : 1200px) {
+
+    }
+
+    /* Medium Devices, Desktops */
+    @media only screen and (max-width : 992px) {
+
+    }
+
+    /* Small Devices, Tablets */
+    @media only screen and (max-width : 768px) {
+        #recent-cars .col-md-3 {
+            padding: 0 15px;
+            padding-bottom: 20px;
+        }
+        
+        
+        #popular-cars .col-md-3 {
+            padding: 0 15px;
+            padding-bottom: 20px;
+        }   
+           
+
+        
+    }
+
+    /* Extra Small Devices, Phones */ 
+    @media only screen and (max-width : 480px) {
+        .img-container {
+            top: 30%;
+        }
+        #recent-cars .col-md-3 {
+           width: 100%
+        }
+        #popular-cars .col-md-3 {
+           width: 100%
+        }
+        #recent-cars img {
+            width: 65%;
+        }
+        #popular-cars img {
+            width: 65%;
+        }
+        #popular-cars .contant-wrap {
+            text-align:inherit;
+            padding: 0;
+        }
+        .contant-wrap{
+            display: inline-block;
+        }
+        .recent-contant-wrap {
+            display: inline-block;
+        }
+    }
+
+    /* Custom, iPhone Retina */ 
+    @media only screen and (max-width : 320px) {
+        #popular-cars .col-md-3 {
+            width: 100%;
+        }  
+        #recent-cars .col-md-3 {
+           width: 100%;
+        }
+        #recent-cars img {
+            width: 256px;
+        }
+        .recent-contant-wrap {
+            display: block;
+        }
+         #popular-cars img {
+            width: 256px;;
+        }
+        #popular-cars .col-md-3 {
+           width: 100%;
+        }
+        #popular-cars .contant-wrap {
+            /* padding-left: 15px; */
+            text-align: center;
+        }
+        .contant-wrap{
+            display: block;
+        }
+    }

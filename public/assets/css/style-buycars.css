@@ -1,0 +1,348 @@
+
+[type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+    /* position: absolute; */
+     padding-left: 137px;
+     opacity: 1; 
+     left: auto;
+    float: right;
+    position: initial;    
+}
+
+/*************************
+    ALL cars
+*************************/
+#all-cars{
+    padding-top: 64px;
+}
+#all-cars img{
+    width: 256px;
+    height: 161px;
+}
+#all-cars .col-md-3{
+    margin: 20px;
+}
+#all-cars h2,#all-cars h4{
+    /*text-align: center;*/
+}
+#all-cars h2{
+    padding: 40px 0 30px;
+}
+#all-cars p{
+    text-align: center;
+}
+#all-cars p a,#all-cars .view-all a{
+    text-decoration: none;
+}
+#all-cars .view-all{
+    text-align: center;
+    font-size: 16px;
+    padding: 20px 0 50px;
+}
+#all-cars .search{
+    border: 3px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    padding-left: 6px;
+    width: 45%; 
+}
+#all-cars .search:focus{
+    border-color: #f3371c;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #f3371c;
+}
+#all-cars .col-md-4{
+    padding:0 15px;
+}
+#all-cars .wrap{
+    border: 5px solid #ccc;
+    border-radius: 5px;
+}
+#all-cars .wrap:hover{
+    box-shadow: 0px 0px 10px #f3371c;
+    border-color: #f3371c;
+}
+#all-cars .content-wrap{
+    margin-left: 10px;
+}
+#all-cars .content-wrap .car-model{
+    font-size: 12px;
+}
+/* #all-cars .shortinfo{
+
+} */
+#all-cars .shortinfo .divider{
+    color: #afafaf;
+    background-color: rgba(224, 224, 224, 0);
+}
+#all-cars .shortinfo label{
+    font-size: 12px;
+    margin-bottom: 0px;
+    font-weight: 400;
+    color: #797979;
+}
+
+
+
+/*********************
+     Toggle Styles 
+ ***********************/
+
+#wrapper {
+    padding-left: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    min-height: 450px;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto 0;
+    position: relative;
+    color: #ccc;
+}
+
+#wrapper.toggled {
+    padding-left: 250px;
+}
+
+#sidebar-wrapper {
+    z-index: 7;
+    left: auto;
+    height: 100%;
+    margin-left: -250px;
+    overflow-y: auto;
+    background: #191919;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    position: absolute;
+    /* left: 0; */
+     top: 0px; 
+    bottom: 0px;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    width: 250px;
+}
+.panel-default {
+    border-color: #191919;
+}
+.panel {
+    background-color: #191919;
+}
+#pricerange .form-control,#kilometersdone .form-control{
+    color: #ccc;
+    background-color: #202020
+}
+#page-content-wrapper {
+    width: 100%;
+    padding: 15px;
+}
+
+#wrapper.toggled #page-content-wrapper {
+    position: absolute;
+    margin-right: -250px;
+}
+
+/* Sidebar Styles */
+
+.sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 250px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar-nav li {
+    text-indent: 20px;
+    line-height: 40px;
+}
+
+.sidebar-nav li a {
+    display: block;
+    text-decoration: none;
+    color: #999999;
+}
+
+.sidebar-nav li a:hover {
+    text-decoration: none;
+    color: #fff;
+    background: rgba(255,255,255,0.2);
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+    text-decoration: none;
+}
+
+.sidebar-nav > .sidebar-brand {
+    height: 65px;
+    font-size: 18px;
+    line-height: 60px;
+}
+
+.sidebar-nav > .sidebar-brand a {
+    color: #999999;
+}
+
+.sidebar-nav > .sidebar-brand a:hover {
+    color: #fff;
+    background: none;
+}
+.panel-group .panel {
+    border-radius: 0px;
+}
+.panel-group {
+     margin-bottom: 0px; 
+}
+.panel-group a{
+    color: #ccc;
+    text-decoration: none !important;
+}
+.panel-group .panel-heading {
+    border-bottom: 0;
+    background-color: #191919;
+    border-bottom: 1px solid #f3371c26;
+}
+.panel-group a:hover {
+    color: #f3371c; 
+}
+.panel-default>.panel-heading+.panel-collapse>.panel-body {
+    border-top-color: #ddd0;
+}
+.list-group-item {
+    font-size: 12px;
+    border: 1px;
+    border-bottom: 1px solid #f3371c26;
+    background-color: #ffffff08;
+}
+.brandSearch{
+    border: 1px solid #dddddd !important;
+    font-size: 16px;
+    margin-bottom: 0px !important;
+    padding-left: 1% !important;
+    width: 99% !important;
+}
+.brandSearch:focus:not([readonly]) {
+    border: 1px solid #f3371c !important;
+    box-shadow: 0 0px 0 0 !important;
+
+}
+/* side sub menu filter */
+.mini-submenu{
+  display:none;  
+
+}
+
+.mini-submenu:hover{
+  cursor: pointer;
+}
+
+#all-cars .mini-submenu img {
+    height: inherit;
+    width: inherit;
+}
+
+
+
+#slide-submenu{
+  background: rgba(0, 0, 0, 0.45);
+  display: inline-block;
+  padding: 0 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+
+
+
+
+@media(min-width:768px) {
+    #wrapper {
+        padding-left: 250px;
+    }
+
+    #wrapper.toggled {
+        padding-left: 0;
+    }
+
+    #sidebar-wrapper {
+        width: 250px;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        width: 0;
+    }
+
+    #page-content-wrapper {
+        padding: 20px;
+        position: relative;
+    }
+
+    #wrapper.toggled #page-content-wrapper {
+        position: relative;
+        margin-right: 0;
+    }
+    .filter-button-collapse{
+        /* display: none; */
+        width: 0;
+    }
+}
+
+
+
+
+ /* Large Devices, Wide Screens */
+    @media only screen and (min-width : 1201px) {
+        #slide-submenu {
+            display:none;
+        }
+        .mini-submenu {
+            display: none;
+        }
+    }
+    @media only screen and (max-width : 1200px) {
+        #slide-submenu {
+            display:none;
+        }
+        .mini-submenu {
+            display: none;
+        }
+    }
+
+    /* Medium Devices, Desktops */
+    @media only screen and (max-width : 992px) {
+         
+    }
+    @media only screen and (min-width : 769px) {
+         #wrapper{
+                padding-left: 250px;
+            }
+    }
+
+    /* Small Devices, Tablets */
+    @media only screen and (max-width : 768px) {
+        #slide-submenu {
+            display: inline-block;
+        }
+        .mini-submenu{
+         display:block;  
+
+        }
+           
+
+
+
+    }
+
+    /* Extra Small Devices, Phones */ 
+    @media only screen and (max-width : 480px) {
+
+    }
+
+    /* Custom, iPhone Retina */ 
+    @media only screen and (max-width : 320px) {
+
+    }

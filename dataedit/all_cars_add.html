@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Sell Cars</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ 
+        <!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/2.3.2/css/bootstrap.min.css" /> -->
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" />
+        <link href="../css/materialize.min.css" rel="stylesheet"> 
+        <!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
+        <link rel="stylesheet" href="../css/CSstyle.css" />
+
+        <link rel="stylesheet" href="../css/general.css" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="table.css">
+        <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans:400,600,700" rel="stylesheet">
+        <script src="../js/materialize.min.js"></script>
+    </head>
+
+    <body>
+
+        <div id="header" class="header">
+            <nav>
+                <div class="nav-wrapper">
+                    <a href="#!" class="brand-logo logo">
+                        <img src="../images/logo1.png">
+                    </a>
+                    <a href="#" data-activates="mobile-demo" class="button-collapse">
+                        <img src="../images/menu.png">
+                        <!-- <i class="material-icons">menu</i> -->
+                    </a>
+                    <div class="menu">
+                        <ul class="right hide-on-med-and-down menu">
+                            <a href="brands_list.php">
+                                <li class="sliding-middle-out">Brands</li>
+                            </a>
+                            <a href="all_cars_list.php">
+                                <li class="sliding-middle-out">Car Models</li>
+                            </a>
+                            <a href="car_details_list.php">
+                                <li class="sliding-middle-out">Garage</li>
+                            </a>
+                            <a href="customer_reviews_list.php">
+                                <li class="sliding-middle-out">Reviews</li>
+                            </a>
+                        </ul>
+                    </div>
+                    <div class="side-menu">
+                        <ul class="side-nav" id="mobile-demo">
+                            <a href="brands_list.php">
+                                <li>Brands</li>
+                            </a>
+                            <a href="all_cars_list.php">
+                                <li>Car Models</li>
+                            </a>
+                            <a href="car_details_list.php">
+                                <li>Garage</li>
+                            </a>
+                            <a href="customer_reviews_list.php">
+                                <li>Reviews</li>
+                            </a>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+
+
+
+        <div id="sellCars" style="padding-top:80px" ng-app="Demo">     
+            <div class="container" ng-controller="DemoController">
+                
+                <form name="myForm" novalidate ng-submit="onSubmit(myForm.$valid)">
+                        <h3>Car Details</h3>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label>Make</label><br/>
+                                <div custom-select="item.id as item.name for item in nestedItemsLevel1 | filter: $searchTerm" custom-select-options="level1Options" ng-model="formModel.level1" name="make"  ng-class="{'has-error': !myForm.make.$valid && !myForm.make.$pristine}" required></div>
+                                <span class="help-block" ng-show="myForm.make.$error.required  && (!myForm.make.$pristine || myForm.$submitted)">Required!</span>
+                            </div>
+                            <div class="col-md-3">
+                                <label>Model</label><br/>
+                                <input class="kmsInput form-control" type="text" name="model" ng-model="formModel.model" required>
+                                <span class="help-block" ng-show="myForm.model.$error.required && (!myForm.model.$pristine || myForm.$submitted)">Required!</span>
+                            </div>
+                            <div class="col-md-3">
+                                <label>Varient</label><br/>
+                                <input class="kmsInput form-control" type="text" name="varients" ng-model="formModel.varients" required>
+                                <span class="help-block" ng-show="myForm.varients.$error.required && (!myForm.varients.$pristine || myForm.$submitted)">Required!</span>
+                            </div>
+                        </div>
+                        <div class="submit ">
+                            <input class="submit-btn btn-primary" type="submit"></input>
+                        </div>
+                </form>
+            </div>
+        </div>
+
+        <script src="../js/materialize.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>    
+        
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+        <script src="../js/customSelect.js"></script>
+        <!-- <script src="js/jcs-auto-validate.min.js"></script> -->
+        <script>
+            (function () {
+                var app = angular.module('Demo', ['chainSelect']);
+                /*app.value('level1', {
+                    displayText: 'make'
+                });*/
+                var brand_name='';
+                app.controller('DemoController', ['$scope', '$timeout', '$q', '$http', function ($scope, $timeout, $q, $http) {
+                    
+                    $scope.phoneNumbr = /^\+?\d{2}[- ]?\d{3}[- ]?\d{5}$/;
+                    var nestedItemsLevel1data;
+                    // getdataFactory.getAllCarsList = function () {
+                        $http.get("../ws/brand1.php").then(function (response) {
+                              $scope.nestedItemsLevel1 =  response.data.data;
+                             console.log(response);
+                        });
+                    // }
+                     //   console.log(nestedItemsLevel1data);
+                     // $scope.nestedItemsLevel1 = nestedItemsLevel1data;
+                    //   $scope.nestedItemsLevel1 = [{
+                    //     name: "Audi",
+                    //     id: "1"
+                    //   }, {
+                    //     name: "BMW",
+                    //     id: "2"
+                    //   }, {
+                    //     name: "Chevrolet",
+                    //     id: "3"
+                    //   }, {
+                    //     name: "Fiat",
+                    //     id: "4"
+                    //   }, {
+                    //     name: "Ford",
+                    //     id: "5"
+                    //   }, {
+                    //     name: "Hindustan Motors",
+                    //     id: "6"
+                    //   }];
+
+                      
+                      
+
+                  
+                    $scope.level1Options = {
+                        onSelect: function (item) {
+                            console.log(item.id);
+                            brand_name=item.name;
+                            // console.log(car_name);
+                        }
+                    };
+                    
+                    $scope.onSubmit = function(valid){
+                        if (valid) {
+                        console.log("success", $scope.formModel);
+                            var config= {
+                            method : 'POST',
+                            url : 'all_cars_add.php',
+                            data : {
+                                'make' : brand_name,
+                                'model' : $scope.formModel.model,
+                                'varients' : $scope.formModel.varients,
+                                'brand_id' : $scope.formModel.level1
+                            }
+                        };
+                        var request = $http(config);
+                        request.then(function(response){
+                           window.location.href="all_cars_list.php";
+                        },function(error){
+                            console.log("error");
+                        });
+
+                        }else{
+                         console.log("invalid")   
+                        }
+                    };
+                }]);
+                
+            })();
+        </script>
+    </body>
+</html>

@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Sell Cars</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/2.3.2/css/bootstrap.min.css" /> -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" />
+    <link href="../css/materialize.min.css" rel="stylesheet">
+    <!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="../css/CSstyle.css" />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="../css/general.css" rel="stylesheet">
+    <link href="../css/style-sellcars.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans:400,600,700" rel="stylesheet">
+</head>
+
+<body>
+
+    <div id="header" class="header">
+        <nav>
+            <div class="nav-wrapper">
+                <a href="#!" class="brand-logo logo">
+                    <img src="../images/logo1.png">
+                </a>
+                <a href="#" data-activates="mobile-demo" class="button-collapse">
+                    <img src="../images/menu.png">
+                    <!-- <i class="material-icons">menu</i> -->
+                </a>
+                <div class="menu">
+                    <ul class="right hide-on-med-and-down menu">
+                        <a href="brands_list.php">
+                            <li class="sliding-middle-out">Brands</li>
+                        </a>
+                        <a href="all_cars_list.php">
+                            <li class="sliding-middle-out">Car Models</li>
+                        </a>
+                        <a href="car_details_list.php">
+                            <li class="sliding-middle-out">Garage</li>
+                        </a>
+                        <a href="customer_reviews_list.php">
+                            <li class="sliding-middle-out">Reviews</li>
+                        </a>
+                    </ul>
+                </div>
+                <div class="side-menu">
+                    <ul class="side-nav" id="mobile-demo">
+                        <a href="brands_list.php">
+                            <li>Brands</li>
+                        </a>
+                        <a href="all_cars_list.php">
+                            <li>Car Models</li>
+                        </a>
+                        <a href="car_details_list.php">
+                            <li>Garage</li>
+                        </a>
+                        <a href="customer_reviews_list.php">
+                            <li>Reviews</li>
+                        </a>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+
+
+
+    <div id="sellCars" ng-app="Demo">
+        <div class="container" ng-controller="DemoController">
+
+            <form name="myForm" novalidate ng-submit="onSubmit(myForm.$valid)" enctype="multipart/form-data">
+                <h3>Car Details</h3>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label>Make</label>
+                        <br/>
+                        <div custom-select="item.id as item.name for item in nestedItemsLevel1 | filter: $searchTerm" custom-select-options="level1Options"
+                            ng-model="formModel.level1" name="make" ng-class="{'has-error': !myForm.make.$valid && !myForm.make.$pristine}"
+                            required></div>
+                        <span class="help-block" ng-show="myForm.make.$error.required  && (!myForm.make.$pristine || myForm.$submitted)">Required!</span>
+                    </div>
+                    <div class="col-md-3">
+                        <label>Model</label>
+                        <br/>
+                        <div custom-select="x for x in nestedItemsLevel2 | filter: $searchTerm" custom-select-options="level2Options" ng-model="formModel.level2"
+                            cs-depends-on="formModel.level1" name="model" ng-class="{'has-error': !myForm.model.$valid && !myForm.model.$pristine}"
+                            required></div>
+                        <span class="help-block" ng-show="myForm.make.$error.required  && (!myForm.make.$pristine || myForm.$submitted)">Required!</span>
+                    </div>
+                    <div class="col-md-3">
+                        <label>Varient</label>
+                        <br/>
+                        <div custom-select="x for x in nestedItemsLevel3 | filter: $searchTerm" custom-select-options="level3Options" ng-model="formModel.level3"
+                            cs-depends-on="formModel.level2" name="varient"></div>
+                    </div>
+                    <div class="col-md-3">
+                        <label>Fuel Type</label>
+                        <br/>
+                        <div custom-select="x for x in nestedItemsLevel4 | filter: $searchTerm" ng-model="formModel.level4" cs-depends-on="formModel.level3"
+                            name="fType" required></div>
+                        <span class="help-block" ng-show="myForm.fType.$error.required && (!myForm.fType.$pristine || myForm.$submitted)">Required!</span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3 form-group">
+                        <label>Kilometers</label>
+                        <br/>
+                        <input class="kmsInput form-control" type="text" name="kilometers" ng-model="formModel.kms" required>
+                        <span class="help-block" ng-show="myForm.kilometers.$error.required && (!myForm.kilometers.$pristine || myForm.$submitted)">Required!</span>
+                    </div>
+                    <div class="col-md-3 form-group">
+                        <label>Colors</label>
+                        <br/>
+                        <div custom-select="x for x in Colors | filter: $searchTerm" ng-model="formModel.color"></div>
+                    </div>
+                    <div class="col-md-3 form-group">
+                        <label>Ownership</label>
+                        <br/>
+                        <div custom-select="x for x in Ownership | filter: $searchTerm" ng-model="formModel.ownership" name="owner" required></div>
+                        <span class="help-block" ng-show="myForm.owner.$error.required && (!myForm.owner.$pristine || myForm.$submitted)">Required!</span>
+                    </div>
+                    <div class="col-md-3 form-group">
+                        <label>Year</label>
+                        <br/>
+                        <div custom-select="x for x in Years | filter: $searchTerm" ng-model="formModel.year" name="year" required></div>
+                        <span class="help-block" ng-show="myForm.year.$error.required && (!myForm.year.$pristine || myForm.$submitted)">Required!</span>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3 form-group">
+                        <label>Transmission</label>
+                        <br/>
+                        <div custom-select="x for x in Transmission | filter: $searchTerm" ng-model="formModel.transmission" name="transmission"
+                            required></div>
+                        <span class="help-block" ng-show="myForm.transmission.$error.required && (!myForm.transmission.$pristine || myForm.$submitted)">Required!</span>
+                    </div>
+                    <div class="col-md-3 form-group">
+                        <label>Price</label>
+                        <br/>
+                        <input class="kmsInput form-control" type="text" name="price" ng-model="formModel.price" required>
+                        <span class="help-block" ng-show="myForm.price.$error.required && (!myForm.price.$pristine || myForm.$submitted)">Required!</span>
+                    </div>
+                    <div class="col-md-3 form-group">
+                        <label>Mileage</label>
+                        <br/>
+                        <input class="kmsInput form-control" type="text" name="miles" ng-model="formModel.miles" required>
+                        <span class="help-block" ng-show="myForm.miles.$error.required && (!myForm.miles.$pristine || myForm.$submitted)">Required!</span>
+                    </div>
+                    <div class="col-md-3 form-group">
+                        <label>Body Type</label>
+                        <br/>
+                        <div custom-select="x for x in bodyOptions | filter: $searchTerm" ng-model="formModel.bodyType"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <input type="file" name="filetoup" file-model="formModel.myFile" multiple />
+                </div>
+                <div class="submit">
+                    <input class="submit-btn btn-primary" type="submit"></input>
+                </div>
+
+            </form>
+            <!-- <pre>{{myForm  | json}}</pre> -->
+        </div>
+    </div>
+
+
+    <script src="../js/materialize.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+    <script src="../js/customSelect.js"></script>
+    <!-- <script src="js/jcs-auto-validate.min.js"></script> -->
+    <script>
+        (function () {
+            function getParameterByName(name, url) {
+                if (!url) {
+                    url = window.location.href;
+                }
+                name = name.replace(/[\[\]]/g, "\\$&");
+                var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                    results = regex.exec(url);
+                if (!results) return null;
+                if (!results[2]) return '';
+                return decodeURIComponent(results[2].replace(/\+/g, " "));
+            }
+            var car_id = getParameterByName('id');
+            console.log(car_id);
+            var app = angular.module('Demo', ['chainSelect']);
+            /*app.value('level1', {
+                displayText: 'make'
+            });*/
+            app.directive('fileModel', ['$parse', function ($parse) {
+                return {
+                    restrict: 'A',
+                    link: function (scope, element, attrs) {
+                        var model = $parse(attrs.fileModel);
+                        var modelSetter = model.assign;
+
+                        element.bind('change', function () {
+                            var files = [];
+                            angular.forEach(element[0].files, function (file) {
+                                files.push(file);
+                            });
+                            scope.$apply(function () {
+                                modelSetter(scope, files);
+                            });
+                        });
+                    }
+                };
+            }]);
+
+
+
+            app.controller('DemoController', ['$scope', '$timeout', '$q', '$http', function ($scope, $timeout, $q, $http) {
+
+                $scope.phoneNumbr = /^\+?\d{2}[- ]?\d{3}[- ]?\d{5}$/;
+                var co_option;var selected_car;var brands_data;
+                $http.get("../ws/brands_list.php").then(function (response) {
+                    brands_data = response.data.data;
+                    $scope.nestedItemsLevel1 = brands_data;
+                    console.log(response.data.data);
+                });
+                $http.get("../ws/all_cars.php").then(function (response) {
+                    co_option = response.data.data;
+                    // console.log(response.data.data);
+                    // console.log(co_option);
+                });
+                 $http.get("../ws/car_details.php?id=" + car_id).then(function (response) {
+                    selected_car = response.data.data;
+                    // $scope.formModel.level1 = selected_car.brand_id;
+                    promiseloop(selected_car);
+                    function promiseloop(selected_car) {
+                        var promise = new Promise(function (resolve, reject) {
+                            var r = setLevel1(selected_car);
+                            console.log(r);
+                            if (setLevel1(selected_car)) {
+                                resolve();
+                            } else {
+                                promiseloop(selected_car);
+                            }
+                        });
+                        promise.then(function (resolve) {
+                            if (setLevel2(selected_car)) {
+                                return 1;
+                            } else {
+                                promiseloop(selected_car);
+                            }
+
+                        }).then(function (val) {
+                            if (val) {
+                                if (setLevel3(selected_car)) {
+                                    return 1;
+                                } else {
+                                    promiseloop(selected_car);
+                                }
+                            }
+
+                        }).then(function (val) {
+                            if (val) {
+                                if (setLevel4(selected_car)) {
+                                    return 1;
+                                } else {
+                                    promiseloop(selected_car);
+                                }
+                            }
+                        }).then(function (val) {
+                            if (val) {
+                                if (setOthers(selected_car)) {
+                                    return;
+                                } else {
+                                    promiseloop(selected_car);
+                                }
+                            }
+                        })
+                    }
+
+
+                });
+                
+                $scope.bodyOptions = ["Hatchback", "SUV", "MUV", "Sedan", "Minivan", "Station Wagon", "Coupe", "Truck", "Convertible"];
+                $scope.Colors = ["AliceBlue", "AntiqueWhite", "Aqua", "Aquamarine", "Azure", "Beige", "Bisque", "Black", "BlanchedAlmond", "Blue", "BlueViolet", "Brown", "BurlyWood", "CadetBlue", "Chartreuse", "Chocolate", "Coral", "CornflowerBlue", "Cornsilk", "Crimson", "Cyan", "DarkBlue", "DarkCyan", "DarkGoldenRod", "DarkGray", "DarkGrey", "DarkGreen", "DarkKhaki", "DarkMagenta", "DarkOliveGreen", "Darkorange", "DarkOrchid", "DarkRed", "DarkSalmon", "DarkSeaGreen", "DarkSlateBlue", "DarkSlateGray", "DarkSlateGrey", "DarkTurquoise", "DarkViolet", "DeepPink", "DeepSkyBlue", "DimGray", "DimGrey", "DodgerBlue", "FireBrick", "FloralWhite", "ForestGreen", "Fuchsia", "Gainsboro", "GhostWhite", "Gold", "GoldenRod", "Gray", "Grey", "Green", "GreenYellow", "HoneyDew", "HotPink", "IndianRed", "Indigo", "Ivory", "Khaki", "Lavender", "LavenderBlush", "LawnGreen", "LemonChiffon", "LightBlue", "LightCoral", "LightCyan", "LightGoldenRodYellow", "LightGray", "LightGrey", "LightGreen", "LightPink", "LightSalmon", "LightSeaGreen", "LightSkyBlue", "LightSlateGray", "LightSlateGrey", "LightSteelBlue", "LightYellow", "Lime", "LimeGreen", "Linen", "Magenta", "Maroon", "MediumAquaMarine", "MediumBlue", "MediumOrchid", "MediumPurple", "MediumSeaGreen", "MediumSlateBlue", "MediumSpringGreen", "MediumTurquoise", "MediumVioletRed", "MidnightBlue", "MintCream", "MistyRose", "Moccasin", "NavajoWhite", "Navy", "OldLace", "Olive", "OliveDrab", "Orange", "OrangeRed", "Orchid", "PaleGoldenRod", "PaleGreen", "PaleTurquoise", "PaleVioletRed", "PapayaWhip", "PeachPuff", "Peru", "Pink", "Plum", "PowderBlue", "Purple", "Red", "RosyBrown", "RoyalBlue", "SaddleBrown", "Salmon", "SandyBrown", "SeaGreen", "SeaShell", "Sienna", "Silver", "SkyBlue", "SlateBlue", "SlateGray", "SlateGrey", "Snow", "SpringGreen", "SteelBlue", "Tan", "Teal", "Thistle", "Tomato", "Turquoise", "Violet", "Wheat", "White", "WhiteSmoke", "Yellow", "YellowGreen"];
+                $scope.Ownership = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
+                $scope.Transmission = ["Manual", "Automatic"];
+
+
+                function yearsList(startYear) {
+                    var currentYear = new Date().getFullYear(), years = [];
+                    startYear = startYear || 1980;
+
+                    while (startYear <= currentYear) {
+                        years.push(startYear++);
+                    }
+
+                    $scope.Years = years;
+                }
+                yearsList();
+               // console.log(selected_car);
+                
+                
+
+
+                var selectedBrand_id;
+                var selectedBrandName;
+                var selectedCarModelID;
+                $scope.level1Options = {
+                    onSelect: function (item) {
+                        console.log(item);
+                        $scope.formModel.level1 = item.id;
+                        selectedBrandName = item.name;
+                        var items = [];
+                        selectedBrand_id = item.id;
+                        angular.forEach(co_option, function (value, key) {
+                            if (value.brand_id == selectedBrand_id) {
+                                this.push(value.car_name);
+                            }
+                        }, items);
+                        $scope.nestedItemsLevel2 = items;
+                    }
+                };
+                $scope.level2Options = {
+                    onSelect: function (item) {
+                        console.log(item);
+                        $scope.formModel.level2 = item;
+                        var items = [];
+                        angular.forEach(co_option, function (value, key) {
+                            if (value.car_name == item) {
+                                selectedCarModelID = value.car_id;
+                                //console.log(selectedCarModelID);
+                                var count = value.varients.split(',').length;
+                                for (var i = 0; i < count; i++) {
+                                    this.push(value.varients.split(',')[i]);
+                                }
+                            }
+                        }, items);
+                        $scope.nestedItemsLevel3 = items;
+                    }
+                };
+                $scope.level3Options = {
+                    onSelect: function (item) {
+                        console.log(item);
+                        var items = ["Petrol", "Diesel", "CNG", "LPG", "Electric"];
+                        $scope.nestedItemsLevel4 = items;
+                    }
+                };
+
+                $scope.nestedItemsLevel2 = [];
+                $scope.nestedItemsLevel3 = [];
+                $scope.nestedItemsLevel4 = [];
+
+                $scope.formModel = {
+                    myFile: []
+                }
+
+
+               
+
+                function setLevel1(thisselectedcar) {
+                    return function (thisselectedcar) {
+                       angular.forEach(brands_data, function (value, key) {
+                            if (value.id == thisselectedcar.brand_id) {
+                                $scope.level1Options.onSelect(value);
+                                console.log(thisselectedcar.car_name);
+                                // $scope.formModel.level2 = thisselectedcar.car_name;
+                                // $scope.level2Options.onSelect(thisselectedcar.car_name);
+                                return true;
+                                // $scope.formModel.level2 = thisselectedcar.car_name;
+                            }
+                        }); 
+                    }
+                     
+                }
+                function setLevel2(thisselectedcar) {
+                    $scope.formModel.level2 = thisselectedcar.car_name;
+                    $scope.level2Options.onSelect(thisselectedcar.car_name);
+                    return 1;
+                }
+                function setLevel3(thisselectedcar) {
+                    $scope.formModel.level3 = thisselectedcar.car_name;
+                    $scope.level3Options.onSelect(thisselectedcar.model);
+                    return 1;
+                }
+                function setLevel4(thisselectedcar) {
+                    $scope.formModel.level4 = thisselectedcar.fuel_type;
+                    return 1;
+                }
+                function setOthers(thisselectedcar) {
+                    $scope.formModel.year = thisselectedcar.year;
+                    $scope.formModel.miles = thisselectedcar.mileage;
+                    $scope.formModel.color = thisselectedcar.color;
+                    $scope.formModel.bodyType = thisselectedcar.body_type;
+                    $scope.formModel.kms = thisselectedcar.kilometers;
+                    $scope.formModel.transmission = thisselectedcar.transmission;
+                    $scope.formModel.price = thisselectedcar.price;
+                    $scope.formModel.ownership = thisselectedcar.owners;
+                    return 1;
+                }
+
+
+
+
+
+                $scope.onSubmit = function (valid) {
+                    var compForm = $scope.formModel;
+                    var fd = new FormData();
+                    if (valid) {
+                        fd.append('make', selectedBrandName);
+                        fd.append('model', compForm.level2);
+                        fd.append('varient', compForm.level3);
+                        fd.append('brand_id', selectedBrand_id);
+                        fd.append('car_id', selectedCarModelID);
+                        fd.append('fuelType', compForm.level4);
+                        fd.append('kilometers', compForm.kms);
+                        fd.append('color', compForm.color);
+                        fd.append('year', compForm.year);
+                        fd.append('bodyType', compForm.bodyType);
+                        fd.append('ownership', compForm.ownership);
+                        fd.append('transmission', compForm.transmission);
+                        fd.append('miles', compForm.miles);
+                        fd.append('price', compForm.price);
+                        // fd.append('images', compForm.myFile);
+                        angular.forEach(compForm.myFile, function (file, key) {
+                            var filename = key;
+                            fd.append(filename, file);
+                        });
+                        // console.log(compForm.myFile);
+                        //$scope.formModel = angular.copy({});
+                        var config = {
+                            method: 'POST',
+                            url: 'car_details_add.php',
+                            data: fd,
+                            transformRequest: angular.identity,
+                            headers: { 'Content-Type': undefined }
+                        };
+                        console.log(fd);
+                        var request = $http(config);
+                        request.then(function (response) {
+                            console.log(response);
+                            console.log("sent");
+                        }, function (error) {
+                            console.log("error");
+                        });
+
+                    } else {
+                        console.log("invalid")
+                    }
+                };
+            }]);
+
+        })();
+    </script>
+</body>
+
+</html>
