@@ -53,12 +53,12 @@
 			}
 		});
 
-		var rc_app = angular.module('recentcarsApp',[]);
-		rc_app.controller('recentcarsCtrl',function($scope,$http){
-        $http.get("../../../ws/cars_list.php").then(function (response) {
-            $scope.recentcars = response.data.data;
-        });
-    });
+var rc_app = angular.module('recentcarsApp', ['dataServices']);
+rc_app.controller('recentcarsCtrl', ['$scope', 'getData', function ($scope,  getData){    
+    getData.getAllCarsDetails().then(function (data) {
+            $scope.recentcars = data.data;
+        }); 
+    }]);
 		rc_app.filter('split',function(){
 			return function(input,splitChar,splitIndex){
 				return input.split(splitChar)[splitIndex];
